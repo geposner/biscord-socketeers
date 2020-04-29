@@ -81,9 +81,10 @@ public class Server {
                 outToClient = new PrintWriter(out, true);
                 String username = inFromClient.readLine();
                 while (!server.addUsername(username)) {
-                    outToClient.println("Username taken. Please choose another.");
+                    outToClient.println("REJECT");
                     username = inFromClient.readLine();
                 }
+                outToClient.println("ACCEPT");
                 String message = username + "has joined.";
                 server.sendMessage(message);
                 while(!message.equals("!exit")) {
